@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&subset=latin-ext');
+
+@import 'style/variables';
+@import '~bootstrap/scss/bootstrap.scss';
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.heading {
+  margin-top: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.fab {
+  @include border-radius($border-radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: $white;
+  border-radius: 50%;
+}
+
+a.box-link {
+  display: block;
+  margin-bottom: 1.2rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.hide-placeholder .medium-editor-placeholder:after {
+  display: none;
+}
+
+.medium-editor-element {
+  outline: none;
+}
+
+blockquote {
+  border-left: 3px solid $teal;
+  padding: 10px 20px;
+}

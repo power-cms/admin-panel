@@ -1,0 +1,12 @@
+@import './variables';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~bootstrap/scss/mixins/transition';
+
+@mixin shadow {
+  -webkit-box-shadow: 0 4px 15px rgba($black, 0.05);
+  -moz-box-shadow: 0 4px 15px rgba($black, 0.05);
+  box-shadow: 0 4px 15px rgba($black, 0.05);
+}

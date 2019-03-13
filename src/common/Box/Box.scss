@@ -1,0 +1,42 @@
+@import '../../style/common';
+@import '~bootstrap/scss/mixins/border-radius';
+
+.box {
+  @include border-radius($border-radius-lg);
+  @include shadow;
+  background: $white;
+  padding: 1rem;
+  @include transition;
+
+  &:not(.box-static):hover {
+    transform: scale(1.02);
+    @include transition;
+  }
+
+  &,
+  &:active {
+    color: $body-color;
+  }
+
+  &--lg {
+    padding: 2rem;
+  }
+
+  .box-avatar {
+    border-radius: 50%;
+    background: $blue-dark;
+    color: $white;
+    height: 50px;
+    width: 50px;
+    margin-right: 1rem;
+  }
+
+  &-title {
+    font-size: 1.1rem;
+  }
+
+  &-subtitle {
+    color: $gray-500;
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,12 @@
+version: "3.4"
+
+services:
+
+  admin-panel:
+    build:
+      context: .
+      target: prod
+    image: power-cms-admin
+    env_file: .env
+    ports:
+      - "80:80"

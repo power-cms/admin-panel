@@ -1,0 +1,11 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier", "tslint-sonarts"],
+  "jsRules": {},
+  "rules": {
+    "no-extra-semicolon": false,
+    "no-empty-interface": false,
+    "object-literal-sort-keys": false
+  },
+  "rulesDirectory": []
+}

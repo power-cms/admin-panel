@@ -1,28 +1,35 @@
+import { authContainer, Store } from '@power-cms/react-kit';
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, RouteProps, Switch } from 'react-router-dom';
+import { AuthRoute } from './common/Router/AuthRoute';
+import { AuthLayout } from './layouts/Auth/AuthLayout';
+import { PanelLayout } from './layouts/Panel/PanelLayout';
+import { authRoutes, navigation, panelRoutes } from './routes';
 
-class App extends Component {
-  render() {
+export class App extends Component {
+  public render() {
+    const apiUrl = String(process.env.REACT_APP_BACKEND_ENDPOINT);
+
+    const { renderAuthLayout, renderPanelLayout } = this;
+    const AuthorizedRoutes = authContainer.auth<RouteProps>(AuthRoute);
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Store reducers={['user', 'auth', 'site', 'settings', 'form']} apiUrl={apiUrl}>
+        <Router>
+          <Switch>
+            <Route path="/auth" render={renderAuthLayout} />
+            <AuthorizedRoutes path="/" render={renderPanelLayout} />
+          </Switch>
+        </Router>
+      </Store>
     );
   }
-}
 
-export default App;
+  private renderAuthLayout() {
+    return <AuthLayout routes={authRoutes} />;
+  }
+
+  private renderPanelLayout() {
+    return <PanelLayout routes={panelRoutes} nav={navigation} />;
+  }
+}
